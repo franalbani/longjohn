@@ -24,7 +24,9 @@ services:
         image: alpine
         command: >
             sh -c "ip a &&
-                   ip r"
+                   ip r &&
+                   ping -w 5 -c 3 172.16.21.1 &&
+                   ping -w 5 -c 3 172.16.21.2"
         networks:
             hispaniola:
 
@@ -35,7 +37,7 @@ services:
             sh -c "sleep 2 &&
                    ip a &&
                    ip r &&
-                   ping -c 3 172.16.20.1 &&
-                   ping -c 3 172.16.20.2"
+                   ping -w 5 -c 3 172.16.20.1 &&
+                   ping -w 5 -c 3 172.16.20.2"
         networks:
             island:
