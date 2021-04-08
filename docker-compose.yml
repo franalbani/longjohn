@@ -1,0 +1,41 @@
+version: '3.9'
+
+networks:
+
+    hispaniola:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.16.20.0/24
+        driver_opts:
+            com.docker.network.bridge.name: hispaniola
+
+    island:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.16.21.0/24
+        driver_opts:
+            com.docker.network.bridge.name: island
+
+services:
+
+    jim:
+        image: alpine
+        command: >
+            sh -c "ip a &&
+                   ip r"
+        networks:
+            hispaniola:
+
+
+    ben:
+        image: alpine
+        command: >
+            sh -c "sleep 2 &&
+                   ip a &&
+                   ip r &&
+                   ping -c 3 172.16.20.1 &&
+                   ping -c 3 172.16.20.2"
+        networks:
+            island:
