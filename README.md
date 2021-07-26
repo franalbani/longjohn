@@ -1,6 +1,6 @@
 # longjohn
 
-Docker-compose networking example
+Docker-compose networking example for ilustrating [this stackoverflow question](https://stackoverflow.com/questions/67013137/in-docker-compose-why-container-connected-to-bridge-a-can-ping-bridge-b).
 
 # Results
 
